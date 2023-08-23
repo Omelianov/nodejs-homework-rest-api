@@ -17,6 +17,4 @@ const updateAvatar = async (req, res) => {
 }
 
 
-module.exports = {
-    updateAvatar
-}
+module.exports = updateAvatar;

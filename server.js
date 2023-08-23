@@ -15,10 +15,4 @@ mongoose.connect(MONGO_CONNECTION_STRING)
   })
 
 
-// mongoose.connect(MONGO_CONNECTION_STRING, { useUnifiedTopology: true, useNewUrlParser: true }).then(() => {
-//   app.listen(PORT, () => console.log(`Server running on the port: ${PORT}...`))
-// }).catch(e => {
-//   console.log(e.message);
-//   process.exit(1)
-// })
 
