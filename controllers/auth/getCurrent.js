@@ -1,3 +1,4 @@
+
 const getCurrent = async (req, res) => {
     const { name, email } = req.user;
 
