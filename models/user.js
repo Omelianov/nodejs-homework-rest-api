@@ -1,5 +1,7 @@
 const { Schema, model } = require("mongoose")
-const Joi = require("joi")
+const Joi = require("joi");
+
+// const gravatar = require('gravatar')
 
 const { handleSaveErrors } = require("../helpers")
 
@@ -31,6 +33,9 @@ const userSchema = new Schema({
         default: "starter",
         enum: allowedSubscriptions
     },
+    avatarURL: {
+        type: String,
+    }
 }, { versionKey: false, timestamps: true })
 
 userSchema.post("save", handleSaveErrors)
@@ -49,6 +54,9 @@ const loginSchema = Joi.object({
 const subscriptionSchema = Joi.object({
     subscription: Joi.string().valid(...allowedSubscriptions).required()
 })
+
+// const registerSchemaAvatar = gravatar.url({
+//     email, )}
 
 const schemas = {
     registerSchema,
