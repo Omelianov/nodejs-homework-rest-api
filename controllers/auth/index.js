@@ -3,11 +3,16 @@ const login = require("./login")
 const getCurrent = require("./getCurrent")
 const logout = require("./logout")
 const subscription = require("./subscription")
+const updateAvatar = require("./updateAvatar")
+
+const { ctrlWrapper } = require("../../helpers/ctrlWrapper");
+
 
 module.exports = {
-    register,
-    login,
-    getCurrent,
-    logout,
-    subscription
+    getCurrent: ctrlWrapper(getCurrent),
+    register: ctrlWrapper(register),
+    login: ctrlWrapper(login),
+    logout: ctrlWrapper(logout),
+    subscription: ctrlWrapper(subscription),
+    updateAvatar: ctrlWrapper(updateAvatar)
 }
