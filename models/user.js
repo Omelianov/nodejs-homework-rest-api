@@ -1,8 +1,6 @@
 const { Schema, model } = require("mongoose")
 const Joi = require("joi");
 
-// const gravatar = require('gravatar')
-
 const { handleSaveErrors } = require("../helpers")
 
 const emailRegexp = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/
@@ -43,6 +41,7 @@ const userSchema = new Schema({
     },
     verificationToken: {
         type: String,
+        required: [true, 'Verify token is required'],
         default: ""
     }
 }, { versionKey: false, timestamps: true })
@@ -60,17 +59,20 @@ const loginSchema = Joi.object({
     password: Joi.string().min(6).required(),
 })
 
-const subscriptionSchema = Joi.object({
-    subscription: Joi.string().valid(...allowedSubscriptions).required()
+// const subscriptionSchema = Joi.object({
+//     subscription: Joi.string().valid(...allowedSubscriptions).required()
+// })
+
+const verifyEmailSchema = Joi.object({
+    email: Joi.string().pattern(emailRegexp).required(),
 })
 
-// const registerSchemaAvatar = gravatar.url({
-//     email, )}
 
 const schemas = {
     registerSchema,
     loginSchema,
-    subscriptionSchema
+    verifyEmailSchema,
+    // subscriptionSchema
 }
 
 const User = model("user", userSchema)
